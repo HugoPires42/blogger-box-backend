@@ -1,11 +1,23 @@
 package com.dauphine.blogger.models;
 
+import jakarta.persistence.*;
+
 import java.util.UUID;
 
-public class Category {
+@Entity
+@Table(name="category")
 
+public class Category {
+    @Id
+    @Column(name="id")
     private UUID id;
+
+    @Column(name="name")
     private String name;
+
+    public Category(){
+
+    }
 
     public Category(String name) {
         this.id = UUID.randomUUID();

@@ -1,15 +1,27 @@
 package com.dauphine.blogger.models;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.UUID;
-
+@Entity
+@Table(name="post")
 public class Post {
-
+    @Id
+    @Column(name="id")
     private UUID id;
+    @Column(name="title")
     private String title;
+    @Column(name="content")
     private String content;
+    @Column(name="created_date")
     private Date createdDate;
+    @ManyToOne
+    @JoinColumn(name="category_id")
     private Category category;
+
+    public Post(){
+
+    }
 
     public Post(String title, String content, Category category) {
         this.id = UUID.randomUUID();
